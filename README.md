@@ -1,3 +1,3 @@
 # Belajar Node.js
 
-Bagian ini dibuat dari branch latihan-branch.
+Status latihan Git: Versi dari branch latihan-conflict.
