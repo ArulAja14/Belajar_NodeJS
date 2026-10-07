@@ -1,3 +1,4 @@
-# Belajar Node.js
+# Hasil Latihan Merge Conflict
 
-Status latihan Git: Versi dari branch main.
+Perubahan dari brancch main berhasil digabungkan.
+Perubahan dari branch latihan-conflict berhasil digabungkan.
