@@ -2,7 +2,7 @@ const db = require("../config/database");
 
 const validateUser = require("../validators/userValidator");
 
-const getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res, next) => {
     
     try {
     const sql = "SELECT * FROM users";
@@ -12,14 +12,11 @@ const getAllUsers = async (req, res) => {
     res.status(200).json(results);
     
     } catch (error) {
-        res.status(500).json({
-            message: "Gagal mengambil data user",
-            error: error.message
-        });
+        next(error);
     }
 };
 
-const getUserById = async (req, res) => {
+const getUserById = async (req, res, next) => {
     try {
     const id = req.params.id;
 
@@ -36,14 +33,11 @@ const getUserById = async (req, res) => {
     res.status(200).json(results[0]);
 
 } catch (error) {
-    res.status(500).json({
-        message: "Gagal mengambil data user",
-        error: error.message
-    });
+    next(error);
 }
 };
 
-const createUser = async (req, res) => {
+const createUser = async (req, res, next) => {
     try {
         const body = req.body;
 
@@ -75,14 +69,11 @@ const createUser = async (req, res) => {
             }
         });
     } catch (error) {
-        res.status(500).json({
-            message: "Gagal menambahkan user",
-            error: error.message
-        });
-    }
+        next(error);
+        }
 };
 
-const updateUser = async (req, res) => {
+const updateUser = async (req, res, next) => {
     try {
     const id = req.params.id;
     const body = req.body;
@@ -122,14 +113,11 @@ const updateUser = async (req, res) => {
         }
     });
 } catch (error) {
-    res.status(500).json({
-        message: "Gagal mengupdate user",
-        error: error.message
-    });
+    next(error);
 }
 };
 
-const deleteUser = async (req, res) => {
+const deleteUser = async (req, res, next) => {
     try {
     const id = req.params.id;
 
@@ -148,10 +136,7 @@ const deleteUser = async (req, res) => {
     });
     
 } catch (error) {
-    res.status(500).json({
-        message: "Gagal menghapus user",
-        error: error.message
-    });
+    next(error);
 }
 };
 

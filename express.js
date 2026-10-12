@@ -1,3 +1,5 @@
+const errorHandler = require("./middlewares/errorHandler");
+
 const express = require("express");
 
 const logger = require("./middlewares/LoggerMiddleware");
@@ -17,6 +19,8 @@ app.use("/api/users", userRoutes);
 app.get("/", (req, res) => {
     res.send("Hello Express!");
 });
+
+app.use(errorHandler);
 
 app.listen(3000, () => {
     console.log("Express berjalan di http://localhost:3000");
